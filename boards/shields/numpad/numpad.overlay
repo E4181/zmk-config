@@ -64,6 +64,22 @@
 
 //ws2812
 &pinctrl {
+    //for oled
+    i2c0_default: i2c0_default {
+        group1 {
+            psels = <NRF_PSEL(TWIM_SDA, 0, 17)>,
+                    <NRF_PSEL(TWIM_SCL, 0, 20)>;
+        };
+    };
+
+    i2c0_sleep: i2c0_sleep {
+        group1 {
+            psels = <NRF_PSEL(TWIM_SDA, 0, 17)>,
+                    <NRF_PSEL(TWIM_SCL, 0, 20)>;
+            low-power-enable;
+        };
+    };
+//for ws2812
     spi3_default: spi3_default {
         group1 {
             psels = <NRF_PSEL(SPIM_MOSI, 0, 24)>;
@@ -78,6 +94,33 @@
     };
 };
 
+//oled
+&i2c0 {
+	status = "okay";
+	//compatible = "nordic,nrf-twi";
+	pinctrl-0 = <&i2c0_default>;
+	pinctrl-1 = <&i2c0_sleep>;
+	pinctrl-names = "default", "sleep";
+    
+	oled: ssd1306@3c {
+        width = <128>;
+		height = <32>;
+        compatible = "solomon,ssd1306fb";
+        segment-offset = <0>;
+        multiplex-ratio = <31>; 
+        com-sequential; //1.30注销本行
+        label = "DISPLAY";
+		reg = <0x3c>;
+		page-offset = <0>;
+		display-offset = <0>;
+		segment-remap;
+		com-invdir;
+        inversion-on;   // 翻转颜色
+		prechargep = <0x22>;
+	};
+};
+
+//ws2812
 &spi3 {
     compatible = "nordic,nrf-spim";
     status = "okay";
@@ -103,4 +146,4 @@
 };
 
 //pmw3610
-//oled
+
