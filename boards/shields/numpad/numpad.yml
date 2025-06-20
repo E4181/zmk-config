@@ -1,0 +1,10 @@
+file_format: "1"
+id: numpad
+name: numpad
+type: shield
+url: 
+requires: [nrfmicro_13_52840]
+features:
+  - keys
+  - underglow
+  - studio
