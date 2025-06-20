@@ -15,6 +15,7 @@
         zmk,physical-layout = &physical_layout0;
         zmk,studio-rpc-uart = &uart0;
         zmk,underglow = &led_strip;
+        zephyr,display = &oled;
     };
 
     kscan0: kscan {
