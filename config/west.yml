@@ -2,24 +2,15 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-        # OLED/NICE VIEW
-    - name: mctechnology17
-      url-base: https://github.com/mctechnology17
-      # PMW3610
-    - name: badjeff
-      url-base: https://github.com/badjeff
+    - name: inorichi
+      url-base: https://github.com/inorichi
   projects:
     - name: zmk
-      remote: zmkfirmware
+      remote: zmk
       revision: main
       import: app/west.yml
-      # oled/nice view
-    - name: zmk-nice-oled
-      remote: mctechnology17
-      revision: main
-      # pmw3610
     - name: zmk-pmw3610-driver
-      remote: badjeff
+      remote: inorichi
       revision: main
   self:
     path: config
