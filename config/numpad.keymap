@@ -30,9 +30,11 @@
 &bt BT_CLR      &trans  &trans  &bootloader
 &trans          &trans  &trans  &rgb_ug RGB_EFF
 &trans          &trans  &trans
-&mt A C         &trans  &trans  &rgb_ug RGB_TOG
+&kp DQT         &trans  &trans  &rgb_ug RGB_TOG
 &studio_unlock          &trans
             >;
+
+            label = "second";
         };
 
         tri_layer {
