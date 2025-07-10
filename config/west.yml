@@ -6,6 +6,8 @@ manifest:
       url-base: https://github.com/zmkfirmware
     - name: mctechnology17
       url-base: https://github.com/mctechnology17
+    - name: caksoylar
+      url-base: https://github.com/caksoylar
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -13,6 +15,9 @@ manifest:
       import: app/west.yml
     - name: zmk-nice-oled
       remote: mctechnology17
+      revision: main
+    - name: zmk-rgbled-widget
+      remote: caksoylar
       revision: main
 
   self:

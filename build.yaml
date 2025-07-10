@@ -2,4 +2,9 @@ include:
    - board: nrfmicro_13
      shield: new50 nice_oled
 
+
      
+
+#include:
+#  - board: nrfmicro_13
+#    shield: new50 rgbled_adapter
