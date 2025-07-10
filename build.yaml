@@ -1,3 +1,5 @@
 include:
    - board: nrfmicro_13
-     shield: numpad
+     shield: new50 nice_oled
+
+     

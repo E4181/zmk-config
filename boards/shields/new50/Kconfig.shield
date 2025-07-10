@@ -1,0 +1,2 @@
+config SHIELD_NEW50
+	def_bool $(shields_list_contains,new50)

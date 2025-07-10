@@ -1,0 +1,83 @@
+&pinctrl {
+//for oled
+    i2c1_default: i2c1_default {
+        group1 {
+            psels = <NRF_PSEL(TWIM_SDA, 0, 30)>,
+                    <NRF_PSEL(TWIM_SCL, 0, 31)>;
+        };
+   };
+
+    i2c1_sleep: i2c1_sleep {
+        group1 {
+            psels = <NRF_PSEL(TWIM_SDA, 0, 30)>,
+                    <NRF_PSEL(TWIM_SCL, 0, 31)>;
+            low-power-enable;
+        };
+    };
+
+//for ws2812
+    spi3_default: spi3_default {
+        group1 {
+            psels = <NRF_PSEL(SPIM_MOSI, 0, 29)>; //or p0.06
+        };
+    };
+
+    spi3_sleep: spi3_sleep {
+        group1 {
+            psels = <NRF_PSEL(SPIM_MOSI, 0, 29)>; //or p0.06
+            low-power-enable;
+        };
+    };
+};
+
+//oled
+&i2c1 {
+	status = "okay";
+	compatible = "nordic,nrf-twi";
+	pinctrl-0 = <&i2c1_default>;
+	pinctrl-1 = <&i2c1_sleep>;
+	pinctrl-names = "default", "sleep";
+    
+	oled: ssd1306@3c {
+        width = <128>;
+		height = <32>;
+        compatible = "solomon,ssd1306fb";
+        segment-offset = <0>;
+        multiplex-ratio = <31>; 
+        com-sequential; //1.30
+        label = "DISPLAY";
+		reg = <0x3c>;
+		page-offset = <0>;
+		display-offset = <0>;
+		segment-remap;
+		com-invdir;
+        inversion-on;   // 翻转颜色
+		prechargep = <0x22>;
+	};
+};
+
+
+//ws2812
+&spi3 {
+    compatible = "nordic,nrf-spim";
+    status = "okay";
+
+    pinctrl-0 = <&spi3_default>;
+    pinctrl-1 = <&spi3_sleep>;
+    pinctrl-names = "default", "sleep";
+
+    led_strip: ws2812@0 {
+        compatible = "worldsemi,ws2812-spi";
+
+        /* SPI */
+        reg = <0>; /* ignored, but necessary for SPI bindings */
+        spi-max-frequency = <4000000>;
+
+        /* WS2812 */
+        chain-length = <50>; /* arbitrary; change at will */
+        spi-one-frame = <0x70>;
+        spi-zero-frame = <0x40>;
+
+        color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
+    };
+};

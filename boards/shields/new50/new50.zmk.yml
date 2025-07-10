@@ -1,0 +1,12 @@
+file_format: "1"
+id: new50
+name: new50
+type: shield
+url: 
+requires: [nrfmicro_13_52840]
+exposes: [i2c_oled]
+features:
+  - keys
+  - studio
+  - underglow
+  - display

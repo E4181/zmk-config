@@ -1,0 +1,6 @@
+if SHIELD_NWE50
+
+config ZMK_KEYBOARD_NAME
+    default "new50"
+
+endif
