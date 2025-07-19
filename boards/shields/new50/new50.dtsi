@@ -93,7 +93,7 @@
         compatible = "gpio-leds";
         status = "okay";
         led0: led_0 {
-            gpios = <&gpio1 13 GPIO_ACTIVE_HIGH>;  // red LED
+            gpios = <&gpio1 13 GPIO_ACTIVE_HIGH>;  // white LED
         };
         led1: led_1 {
             gpios = <&gpio0 2 GPIO_ACTIVE_HIGH>;  // green LED
