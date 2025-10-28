@@ -8,6 +8,8 @@ manifest:
       url-base: https://github.com/mctechnology17
     - name: caksoylar
       url-base: https://github.com/caksoylar
+    - name: AYM1607
+      url-base: https://github.com/AYM1607
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -18,6 +20,9 @@ manifest:
       revision: main
     - name: zmk-rgbled-widget
       remote: caksoylar
+      revision: main
+    - name: zmk-driver-azoteq-iqs5xx
+      remote: AYM1607
       revision: main
 
   self:
